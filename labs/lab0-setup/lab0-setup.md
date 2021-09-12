@@ -12,9 +12,10 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 ----
 Depending on your hardware, follow the instructions provided in this directory: [Raspberry Pi 4](https://github.com/strubell/11-767/blob/main/labs/lab0-setup/setup-rpi4.md), [Jetson Nano](https://github.com/strubell/11-767/blob/main/labs/lab0-setup/setup-jetson.md), [Google Coral](https://coral.ai/docs/dev-board/get-started/). 
 1. What device(s) are you setting up? <b>Jetson Nano</b>
-2. Did you run into any roadblocks following the instructions? What happened, and what did you do to fix the problem?It is going to take me 3 hours to download the 
+2. Did you run into any roadblocks following the instructions? What happened, and what did you do to fix the problem?It is going to take me 3 hours to download the Jetson ROM image.
 3. Are all group members now able to ssh in to the device from their laptops? If not, why not? How will this be resolved?
-
+   No. It is due to the security settings of the CMU network. We switched the environment and use our own network to avoid this issue.
+   
 2: Collaboration / hardware management plan
 ----
 4. What is your group's hardware management plan? <br/>
@@ -26,9 +27,10 @@ We plan to work on the project mostly on Tuesday and Thursday after the class. T
 5. Now, you should be able to take a picture, record audio, run a basic computer vision model, and run a basic NLP model. Now, write a script that pipes I/O to models. For example, write a script that takes a picture then runs a detection model on that image, and/or write a script that runs speech-to-text on audio, then performs classification on the resulting text.Include the script at the end of your lab report.
   
 6. Describe what the script you wrote does (document it.) 
+   <br/>
    The script uses a pretrained model (SSDLite) to perform object detection.
    First, it initialzes the camera object using OpenCV and the pretaiend model (retrieve from torchvision.models).
    Then for each frame that is retrieved from the camera, object detection is performed and the coordiantes of the bounding boxes are stored.
    Finally the coordinates are printed in the console.
-  
+   <br/>
 7. Did you have any trouble getting this running? If so, describe what difficulties you ran into, and how you tried to resolve them.
