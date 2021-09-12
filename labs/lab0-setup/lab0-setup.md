@@ -31,9 +31,8 @@ We plan to work on the project mostly on Tuesday and Thursday after the class. T
   
 6. Describe what the script you wrote does (document it.) 
    <br/>
-   The script uses a pretrained model (SSDLite) to perform object detection.
+   <b>The script uses a pretrained model (SSDLite) to perform object detection.
    First, it initialzes the camera object using OpenCV and the pretaiend model (retrieve from torchvision.models).
    Then for each frame that is retrieved from the camera, object detection is performed and the coordiantes of the bounding boxes are stored.
-   Finally the coordinates are printed in the console.
-   <br/>
+   Finally the coordinates are printed in the console.</b>
 7. Did you have any trouble getting this running? If so, describe what difficulties you ran into, and how you tried to resolve them.
