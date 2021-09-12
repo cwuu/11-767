@@ -12,15 +12,18 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 ----
 Depending on your hardware, follow the instructions provided in this directory: [Raspberry Pi 4](https://github.com/strubell/11-767/blob/main/labs/lab0-setup/setup-rpi4.md), [Jetson Nano](https://github.com/strubell/11-767/blob/main/labs/lab0-setup/setup-jetson.md), [Google Coral](https://coral.ai/docs/dev-board/get-started/). 
 1. What device(s) are you setting up? <b>Jetson Nano</b>
-2. Did you run into any roadblocks following the instructions? What happened, and what did you do to fix the problem?It is going to take me 3 hours to download the Jetson ROM image.
+2. Did you run into any roadblocks following the instructions? What happened, and what did you do to fix the problem? 
+   </br>
+   <b>It is going to take me 3 hours to download the Jetson ROM image.</b>
 3. Are all group members now able to ssh in to the device from their laptops? If not, why not? How will this be resolved?
-   No. It is due to the security settings of the CMU network. We switched the environment and use our own network to avoid this issue.
+   </br>
+   <b>No. It is due to the security settings of the CMU network. We switched the environment and use our own network to avoid this issue.</b>
    
 2: Collaboration / hardware management plan
 ----
 4. What is your group's hardware management plan? <br/>
 <b>One groupmate who live close to the campus will keep the device. 
-We plan to work on the project mostly on Tuesday and Thursday after the class. The working venue will be the study space in GHC, and we will do physical restart or debugging here. Since the device is kept in one of the groupmate's apartment, we will move the working venue to his place in the case of COVID lockdown.<b/>
+We plan to work on the project mostly on Tuesday and Thursday after the class. The working venue will be the study space in GHC, and we will do physical restart or debugging here. Since the device is kept in one of the groupmate's apartment, we will move the working venue to his place in the case of COVID lockdown.</b>
 
 3: Putting it all together
 ----
