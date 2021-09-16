@@ -63,9 +63,9 @@ the running result on desktop should be comparable to the result on jetson nano.
 <br>Output: Image
 <br>Tools for converting device inputs: openCV and PyTorch
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
-<br>Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
+<br>Ans: Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
 - Potential challenges, and how you might adjust the project to adapt to those challenges.
-<br>The original model is using a large and complex model to generate the satisfying results. It is likely that if we significantly compress the model, the final results are not well. Hence it is better to use an iterative approach to achieve that and find the limit.
+<br>Ans: The original model is using a large and complex model to generate the satisfying results. It is likely that if we significantly compress the model, the final results are not well. Hence it is better to use an iterative approach to achieve that and find the limit.
 - Potential extensions to the project.
-<br>Port the compressed model to IPhones/Android phones.
+<br>Ans: Port the compressed model to IPhones/Android phones.
 
