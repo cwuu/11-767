@@ -24,22 +24,24 @@ Choose two of the above ideas. For each one:
 
 
 <b>Idea 4:</b>
-   Ans 1. Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
    <br>
-   Ans 2. We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
+   Ans 1: Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
    <br>
-   Ans 3. Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
+   Ans 2: We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
    <br>
-   Ans 4. Further compress the backbone and try to find the limit of that.
+   Ans 3: Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
+   <br>
+   Ans 4: Further compress the backbone and try to find the limit of that.
 
 <b>Idea 2:</b>
-   Ans 1. Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
    <br>
-   Ans 2. Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
+   Ans 1: Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
    <br>
-   Ans 3. For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
+   Ans 2: Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
    <br>
-   Ans 4. If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
+   Ans 3: For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
+   <br>
+   Ans 4: If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
    <br>
 
 3: Outline
