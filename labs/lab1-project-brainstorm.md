@@ -13,7 +13,6 @@ Write down 3-5 project ideas your group considered (a few sentences each). Depen
  2. Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)
  3. Compress VAE
  4. Deploy a high accuracy vision-based tracker that can run in real-time on embedding devices by compressing CNN-based backbone.
- 5. ...
 
 2: Narrowing
 ----
@@ -24,7 +23,7 @@ Choose two of the above ideas. For each one:
 4. How could you potentially extend the scope of this project if you had e.g. one more month?
 
 
-<b>Idea 2:></b>
+<b>Idea 4:</b>
    1. Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
    2. We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
    3. Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
