@@ -48,20 +48,22 @@ Choose two of the above ideas. For each one:
 ----
 Choose one of the ideas you've considered, and outline a project proposal for that idea. This outline will be shared with other groups next class (Tuesday) to get feedback.
 
+<b>We want to work on idea2 - Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)</b>
+
 Your outline should include:
 - Motivation: 
- <br>Phones' cameras do not perform well under low light conditions due to the hardward sensor limitation. Hence, we would like to leverage deep learning model to improve the visual results on final post-processed images. 
+ <br>Due to hardware CMOW limitaiton, Phones' cameras do not perform well under low light conditions. Hence, we would like to leverage deep learning model to improve the visual results on the final post-processed images. 
   
 - Hypotheses (key ideas)
-
-<br>datasets (containing raw images) is provided, and is provened from the original paper that is sufficient to train the baseline UNet model.
-baseline UNet model is too large to be deployed on the jetson nano (2gb).
+<br>1. datasets (containing raw images) is provided, and is provened from the original paper that is sufficient to train the baseline UNet model.
+<br>2. baseline UNet model is too large to be deployed on the jetson nano (2gb). By testing on our laptop, it requires xxx memory to process.
+<br>3. input of .ARW images combining with UNet model consums too much 
 the running result on desktop should be comparable to the result on jetson nano. (?)
 - How you will test those hypotheses: datasets, baselines, ablations, and other experiments or analyses.
 - I/O: What are the inputs and output modalities? What existing tools will you use to convert device inputs (that are not a core part of your project) to a format readable by the model, and vice versa?
-<br>Input:  Camera/Image
-<br>Output: Image
-<br>Tools for converting device inputs: openCV and PyTorch
+<br>Input:  Image (.ARW)
+<br>Output: Image (.JPEG)
+<br>Tools for converting device inputs: openCV and PyTorch/Tensorflow
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
 <br>Ans: Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
 - Potential challenges, and how you might adjust the project to adapt to those challenges.
