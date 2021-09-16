@@ -2,9 +2,9 @@ Lab 1: Project Brainstorming
 ===
 The goal of this lab is for you to work as a group to brainstorm project ideas. At the end of this exercise you should have an outline for your project proposal that you can share with others to get feedback. We will share these outlines for peer feedback in the next lab.
 
-Group name:
+Group name: 1 tsp of sugars and 3 eggs
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
 
 1: Ideas
 ----
