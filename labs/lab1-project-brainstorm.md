@@ -23,11 +23,18 @@ Choose two of the above ideas. For each one:
 3. What potential road blocks or challenges do you foresee in this project? How might you adjust the project scope in case these aspects present unsurmountable challenges?
 4. How could you potentially extend the scope of this project if you had e.g. one more month?
 
+
+<b>Idea 2:></b>
+   1. Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
+   2. We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
+   3. Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
+   4. Further compress the backbone and try to find the limit of that.
+
 <b>Idea 2:</b>
    1. Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
    2. Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
    3. For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
-   4. If we achieve success in the Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
+   4. If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
 
 
 3: Outline
