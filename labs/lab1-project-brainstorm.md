@@ -37,9 +37,9 @@ Choose two of the above ideas. For each one:
    <br>
    Ans 1: Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
    <br>
-   Ans 2: Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
+   Ans 2: Completing this project, we will 1.learn about the ARM embedded systems, unified memory and the architecture of GPU 2. have hands-on experinece on seperable-depthwise convolution, model quantization, and optimization techniques from parallel computing (numerical and optimization algorithm on GPU).
    <br>
-   Ans 3: For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
+   Ans 3: For a compressed network, the outputs may not have as good visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is satisfactory.
    <br>
    Ans 4: If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
    <br>
