@@ -49,11 +49,24 @@ Choose two of the above ideas. For each one:
 Choose one of the ideas you've considered, and outline a project proposal for that idea. This outline will be shared with other groups next class (Tuesday) to get feedback.
 
 Your outline should include:
-- Motivation
+- Motivation: 
+  Phones' cameras do not perform well under low light conditions due to the hardward sensor limitation. Hence, we would like to leverage deep learning model to improve the visual results on final post-processed images. 
+  
 - Hypotheses (key ideas)
+datasets (containing raw images) is provided, and is provened from the original paper that is sufficient to train the baseline UNet model.
+baseline UNet model is too large to be deployed on the jetson nano (2gb).
+the running result on desktop should be comparable to the result on jetson nano. (?)
+
 - How you will test those hypotheses: datasets, baselines, ablations, and other experiments or analyses.
 - I/O: What are the inputs and output modalities? What existing tools will you use to convert device inputs (that are not a core part of your project) to a format readable by the model, and vice versa?
+Input:  Camera/Image
+Output: Image
+Tools for converting device inputs: openCV and PyTorch
+
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
+Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
 - Potential challenges, and how you might adjust the project to adapt to those challenges.
+The original model is using a large and complex model to generate the satisfying results. It is likely that if we significantly compress the model, the final results are not well. Hence it is better to use an iterative approach to achieve that and find the limit.
 - Potential extensions to the project.
+Port the compressed model to IPhones/Android phones.
 
