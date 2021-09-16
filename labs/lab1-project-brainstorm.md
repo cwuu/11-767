@@ -9,9 +9,9 @@ Group members present in lab today:
 1: Ideas
 ----
 Write down 3-5 project ideas your group considered (a few sentences each). Depending on your group and process, the ideas may be very different, or they may be variations on one central idea.
- 1. Try to increase the inference speed and reduce the size of the ViT mmodel (Reference paper: AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE)
+ 1. Try to increase the inference speed and reduce the size of the ViT mmodel (Reference paper: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale)
  2. Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)
- 3. Compress VAE
+ 3. Compress VAE for facial 3D recontruction
  4. Deploy a high accuracy vision-based tracker that can run in real-time on embedding devices by compressing CNN-based backbone.
 
 2: Narrowing
@@ -24,16 +24,16 @@ Choose two of the above ideas. For each one:
 
 
 <b>Idea 4:</b>
-   1. Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
-   2. We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
-   3. Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
-   4. Further compress the backbone and try to find the limit of that.
+   Ans 1. Emily has worked on some objects tracking projects before and Raymond has worked on images classficaiton tasks.
+   Ans 2. We will have more insights in the backbone and how does the backbone affect the performance of tracking. We may also have to think of multi-threading for I/O (i.e. Camera).
+   Ans 3. Compressing the mainstream backbones may not work. We may have to find another suitable backbone/work on other parts of the end-to-end model.
+   Ans 4. Further compress the backbone and try to find the limit of that.
 
 <b>Idea 2:</b>
-   1. Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
-   2. Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
-   3. For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
-   4. If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
+   Ans 1. Emily has some experiences in UNet and Raymond has developed applications on embedded systems.
+   Ans 2. Completing this project, we will learn about the ARM embedded systems, unified memory and the architecture of GPU. Besides, we will have some hands on experiences in the parallel computing.
+   Ans 3. For a compressed network, the outputs may not have similar visual results as the original model. In that case, we may reduce the compression rate and tune the network until the final result is acceptable.
+   Ans 4. If the result is good on Jetson platform, we may port the model to the Android/IPhone. This will enhance the camera functions of the phones.
 
 
 3: Outline
