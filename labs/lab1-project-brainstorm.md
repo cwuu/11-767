@@ -8,7 +8,6 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 
 1: Ideas
 ----
-Write down 3-5 project ideas your group considered (a few sentences each). Depending on your group and process, the ideas may be very different, or they may be variations on one central idea.
  1. Try to increase the inference speed and reduce the size of the ViT mmodel (Reference paper: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale)
  2. Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)
  3. Compress VAE for facial 3D recontruction
@@ -46,24 +45,23 @@ Choose two of the above ideas. For each one:
 
 3: Outline
 ----
-Choose one of the ideas you've considered, and outline a project proposal for that idea. This outline will be shared with other groups next class (Tuesday) to get feedback.
+<b>Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)</b>
 
-<b>We want to work on idea2 - Deploy a camera running on mobile devices that can process extreme low-light photography by reducing the size of U-Net (paper: Learning to See in the Dark)</b>
-
-Your outline should include:
 - Motivation: 
- <br>Due to hardware CMOW limitaiton, Phones' cameras do not perform well under low light conditions. Hence, we would like to leverage deep learning model to improve the visual results on the final post-processed images. 
+ <br>Ans: Due to hardware CMOS limitaiton, Phones' cameras do not perform well under low light conditions. Hence, we would like to leverage deep learning model to improve the visual results on the final post-processed images. 
   
 - Hypotheses (key ideas)
-<br>1. datasets (containing raw images) is provided, and is provened from the original paper that is sufficient to train the baseline UNet model.
-<br>2. baseline UNet model is too large to be deployed on the jetson nano (2gb). By testing on our laptop, it requires xxx memory to process.
-<br>3. input of .ARW images combining with UNet model consums too much 
-the running result on desktop should be comparable to the result on jetson nano. (?)
+<br>Ans: We will use a pre-trained model as our baseline inference model, and use the dataset provided (containing raw images) as the input for the baseline inference model. Since the input images is specifically for tackling extra low-light condition, and the designed pre-trained model is also customized for this task, the most important hypothese for our project is that we can <b>run our baseline inference model with at least one input raw image on jetson nano (2GB) (regardless of the inference speed in the initial stage).</b> 
+<br>Our hypothese is verifiable, and we can verify it by checking the memory usage during model inferencing with batch size of 1. With this correct hypothese, we will apply different model quantization skills, including but not limited to change the conventional cnn to depthwise seperable convolution, model quantization and model distallaion. 
+
 - How you will test those hypotheses: datasets, baselines, ablations, and other experiments or analyses.
+<br> Ans: To verify our hypothesis, we quicky check the memory usage on our current jetson nano (2GB), and find out that for loading the model with one raw images (1024x1024) on cpu, it takes 4.5 gb memory in total, where 1.9 gb is runing on jetson nano's 2gb main memory and 2.5 gb is running on sd card memory. Since the transmit speed on swaping memory between sd card and jetson nano's main memory is only ~ 20Mib/s, this greatly decreases the performance of inference speed. The memory usage of idle stage is 800MB for jetson nano's main memory, and 600MB for SD card. If we want to mount our model on GPU, this will actually double our memory usage. Considering these facts, to have our inference model squeeze on jetson nano main memory instead of borrowing from swapping between memory from sd card, we request to change our jetson nano from 2gb to 4gb for conducting a comprehensive experiment on model optimization, <b>we request to change to jetson nano(4gb).</b> 
 - I/O: What are the inputs and output modalities? What existing tools will you use to convert device inputs (that are not a core part of your project) to a format readable by the model, and vice versa?
-<br>Input:  Image (.ARW)
-<br>Output: Image (.JPEG)
-<br>Tools for converting device inputs: openCV and PyTorch/Tensorflow
+
+- Input:  Image (.ARW)
+- Output: Image (.JPEG)
+- Tools for converting device inputs: openCV and PyTorch/Tensorflow
+
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
 <br>Ans: Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
 - Potential challenges, and how you might adjust the project to adapt to those challenges.
