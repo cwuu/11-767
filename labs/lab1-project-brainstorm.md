@@ -57,10 +57,7 @@ Choose two of the above ideas. For each one:
 - How you will test those hypotheses: datasets, baselines, ablations, and other experiments or analyses.
 <br> Ans: To verify our hypothesis, we quicky check the memory usage on our current jetson nano (2GB), and find out that for loading the model with one raw images (1024x1024) on cpu, it takes 4.5 gb memory in total, where 1.9 gb is runing on jetson nano's 2gb main memory and 2.5 gb is running on sd card memory. Since the transmit speed on swaping memory between sd card and jetson nano's main memory is only ~ 20Mib/s, this greatly decreases the performance of inference speed. The memory usage of idle stage is 800MB for jetson nano's main memory, and 600MB for SD card. If we want to mount our model on GPU, this will actually double our memory usage. Considering these facts, to have our inference model squeeze on jetson nano main memory instead of borrowing from swapping between memory from sd card, we request to change our jetson nano from 2gb to 4gb for conducting a comprehensive experiment on model optimization, <b>we request to change to jetson nano(4gb).</b> 
 - I/O: What are the inputs and output modalities? What existing tools will you use to convert device inputs (that are not a core part of your project) to a format readable by the model, and vice versa?
-
-- Input:  Image (.ARW)
-- Output: Image (.JPEG)
-- Tools for converting device inputs: openCV and PyTorch/Tensorflow
+<br>Ans: Input:  Image (.ARW), Output: Image (.JPEG), Tools for converting device inputs: openCV and PyTorch/Tensorflow
 
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
 <br>Ans: Normal bayer pattern sensor (Camera). The deep learning model aims at optimizing the low light performance of a specific architecture of CMOS. Hence, it is required to have the specified camera. 
