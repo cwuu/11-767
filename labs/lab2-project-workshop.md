@@ -108,11 +108,11 @@ Name of team being reviewed: <b> Macrosoft </b>
 4: Receiving feedback
 ----
 Read the feedback that the other groups gave on your proposal, and discuss as a group how you will integrate that into your proposal. List 3-5 useful pieces of feedback from your reviews that you will integrate into your proposal:
-1. ...
-2. ...
-3. ...
-4. ...
-5. ...
+1. "A confusing point is that the problems raised in the test hypothesis section talk about memory transfer speed, however the problem raised in the hypothesis section is about fitting the model and image into memory". This is a good point as the relationship betwen the memory transfer speed and the memory location is not explained well in the proposal. Since the network is large (we have tried to ruin an inference on the Jetson), the physical memory(RAM) is not able to store all of it. Part of the data is moved to a low speed SD card. In that case, the low memory transfer speed is a bottleneck to the inference. We will make this clear when drafting the proposal.
+2. "Just a few things to consider: are you sure that U-Net model + 1 mb image takes up 4 gb  of space? U-Net is only 250 mb". Base on the theoretical values, these are correct numbers. One different is that when PyTorch model is being ran, there are soem memory overheads for the framework. We tested that the total memory consumption can go up to 3GB. We should add a screen capture to demonstrate the actual memory usage in the proposal.
+3. "In the hypothesis section, they mentioned that “Phones' cameras do not perform well under low light conditions.” mainstream cell phones nowadays share strong computation power, not to mention the iPad equipped with M1 chip". The message we want to deliver is that we would like to ultilize the powerful computational resources on those phone and the deep learning model to enhance low light pictures. We will state that more clear in the proposal
+4. "While the team identifies optimization as a challenge, instead of looking forward to an iterative approach which might potentially lead to unpredictable performance trends" This is indeed a problem as it is likely to have unpredictable performance due to the optimization. Therefore, we would be more conservative and will use an iterative approach to do that. The aim is to try to find a balance point between acceptable visual performance and the model size. This will be written into the proposal.
+
 
 You may also use this time to get additional feedback from instructors and/or start working on your proposal.
 
