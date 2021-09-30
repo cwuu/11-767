@@ -8,7 +8,7 @@ Include any code you write to perform this benchmarking in your Canvas submissio
 
 Group name:
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
 
 1: Models
 ----
