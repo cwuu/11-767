@@ -6,14 +6,24 @@ Ideally, the models you benchmark will be related to and useful for your class p
 
 Include any code you write to perform this benchmarking in your Canvas submission (either as a link to a folder on github, in a shared drive, zip, etc).
 
-Group name:
+Group name: 1 tsp of sugars and 3 eggs
 ---
 Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
 
+
 1: Models
 ----
-1. Which models and/or model variants will your group be benchmarking? Please be specific.
-2. Why did you choose these models?
+1. Which models and/or model variants will your group be benchmarking? Please be specific.<br/>
+<b>Answer:</b> We use (1)Unet (prject model), (2)squeezenet, (3)mobilenet_v3_small, (4)resnet18
+More specifically, here is how we initialize them:
+```
+    unet = torch.hub.load('mateuszbuda/brain-segmentation-pytorch', 'unet',in_channels=3, out_channels=1, init_features=32, pretrained=lab2_args['pretrained'])
+    squeezenet = models.squeezenet1_0(pretrained=lab2_args['pretrained'])
+    mobilenet_v3_small = models.mobilenet_v3_small(pretrained=lab2_args['pretrained'])
+    resnet18 = models.resnet18(pretrained=lab2_args['pretrained'])
+```
+2. Why did you choose these models?<br/>
+<b>Answer:</b> we choose unet as it is the model we will use for our course project. We use suqeezenet and mobilenet because they are canonical for deploying model on the edge, and we should refer to them as our goal. As for resnet, we pick it because it is commonly use in many scenario.
 3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypothesis for how the models will compare according to these metrics? Explain.
 
 2: Parameter count
