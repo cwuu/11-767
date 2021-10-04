@@ -75,6 +75,18 @@ Model           | UNet  |SqueezeNet  | MobileNet_v3_small | ResNet18 |
 3. Any difficulties you encountered here? Why or why not?
    <br><b>Ans:</b> No, it is straight forward.
 4. Result<br/>
+Fixed input size as 224, changing batch size
+Full
+![image](https://github.com/cwuu/11-767/blob/main/labs/fullbs.png)
+Zoom in (remove bs32)
+![image](https://github.com/cwuu/11-767/blob/main/labs/zoombs.png)
+
+Fixed input size as 448, changing batch size
+Full
+![image](https://github.com/cwuu/11-767/blob/main/labs/inputfull.png)
+Zoom in (remove unet)
+![image](https://github.com/cwuu/11-767/blob/main/labs/inputzoom.png)
+
 
 (input_size, batch_size), meausred in seconds
 
