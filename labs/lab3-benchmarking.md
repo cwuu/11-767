@@ -23,8 +23,9 @@ More specifically, here is how we initialize them:
     resnet18 = models.resnet18(pretrained=lab2_args['pretrained'])
 ```
 2. Why did you choose these models?<br/>
-<b>Answer:</b> we choose unet as it is the model we will use for our course project. We use suqeezenet and mobilenet because they are canonical for deploying model on the edge, and we should refer to them as our goal. As for resnet, we pick it because it is commonly use in many scenario.
+<br><b>Ans:</b> we choose unet as it is the model we will use for our course project. We use suqeezenet and mobilenet because they are canonical for deploying model on the edge, and we should refer to them as our goal. As for resnet, we pick it because it is commonly use in many scenario.
 3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypothesis for how the models will compare according to these metrics? Explain.
+<br><b>Ans:</b> The hypothesis is that the inference latency and the energy use will increase when the number of parameter count increase.
 
 2: Parameter count
 ----
@@ -32,8 +33,10 @@ More specifically, here is how we initialize them:
    ```
    num_params = sum([np.prod(p.size()) for p in model.parameters()])
    ```
-2. Does this number account for any parameter sharing that might be part of the model you're benchmarking? 
+2. Does this number account for any parameter sharing that might be part of the model you're benchmarking? \\
+<br><b>Ans:</b> Yes
 3. Any difficulties you encountered here? Why or why not?
+<b>Answer:</b> No as it is straight forward.
 4. Result<br/>
  
 Model           | UNet  |SqueezeNet  | MobileNet_v3_small | ResNet18 | 
@@ -69,8 +72,9 @@ Model           | UNet  |SqueezeNet  | MobileNet_v3_small | ResNet18 |
    plt.savefig(plot_fname)
    # or plot.show() if you e.g. copy results to laptop
    ```
-4. Any difficulties you encountered here? Why or why not?
-5. Result<br/>
+3. Any difficulties you encountered here? Why or why not?
+   <br><b>Ans:</b> No, it is straight forward.
+4. Result<br/>
 
 (input_size, batch_size), meausred in seconds
 
@@ -97,9 +101,16 @@ Model           | UNet  |SqueezeNet  | MobileNet_v3_small | ResNet18 |
     ```
     and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time.
 
+2. Any difficulties you encountered here? Why or why not?
+<br><b>Answer: </b>Yes. As the jetson nano 2GB does not have the INA3221, we cannot use jtop/sysfs nodes to read the power consumption of the jetson. Therefore we cannot provide the energy consumption for this device.
+
+3. Result   
+<br><b>Answer:</b> N.A.as mentioned above.
+
 5: Discussion
 ----
 1. Analyze the results. Do they support your hypotheses? Why or why not? 
+<br><b>Answer:</b> (Can only comment on the latency due to the limitation of Jetson Nano 2GB) Yes. It is because the latency has a relationship with the number of parameters of the models. If a model has more parameters, it means that it requires more computations. Therefore, more time is needed to finish the computation. It then increases latency.
 
 5: Extra
 ----
