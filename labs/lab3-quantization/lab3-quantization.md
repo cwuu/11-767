@@ -83,20 +83,10 @@ We used dynamic quantization for the models. Therefore weights and activations o
     
     For more information on `timeit` and measuring elapsed time in Python, you may want to refer to [this Stack Overflow post](https://stackoverflow.com/questions/7370801/how-to-measure-elapsed-time-in-python).
 2. Repeat this, varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
-   ```
-   import matplotlib.pyplot as plt
-   
-   plot_fname = "plot.png"
-   x = ... # e.g. batch sizes
-   y = ... # mean timings
-   
-   plt.plot(x, y, 'o')
-   plt.xlabel('e.g. batch size')
-   plt.ylabel('efficiency metric')
-   plt.savefig(plot_fname)
-   # or plot.show() if you e.g. copy results to laptop
-   ```
-4. Any difficulties you encountered here? Why or why not?
+![Lab4_224x224](https://user-images.githubusercontent.com/90403016/137214827-4644c061-35e4-4210-861e-270ca16d5623.png)
+![lab4_448x448](https://user-images.githubusercontent.com/90403016/137214838-1e908f36-b684-4127-88c5-734730ee65aa.png)
+
+3. Any difficulties you encountered here? Why or why not?
 
 5: Discussion
 ----
