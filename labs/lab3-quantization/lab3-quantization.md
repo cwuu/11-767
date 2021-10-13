@@ -13,12 +13,12 @@ Group members present in lab today:
 1: Models
 ----
 1. Which models and/or model variants will your group be studying in this lab? What is the original bit width of the models, and what precision will you be quantizing to? What parts of the model will be quantized (e.g. parameters, activations, ...)? Please be specific.
-</br><b>Answer: </b>We use (1)Unet (prject model), (2)squeezenet, (3)mobilenet_v3_small, (4)resnet18
+</br><b>Answer: </b>We use (1)Unet (prject model), (2)shufflenet, (3)mobilenet_v3_small, (4)resnet18
 We used dynamic quantization for the models. Therefore weights and activations of those models were quantized.
 <br>
 <br>UNet - Original bit width: torch.float32/float32 
 <br>Target Precision: int8
-<br>SqueezeNet - Original bit width: torch.float32/float32
+<br>ShuffleNet - Original bit width: torch.float32/float32
 <br>Target Precision: int8
 <br>Mobilenet_v3_small - Original bit width: torch.float32/float32
 <br>Target Precision: int8
@@ -26,7 +26,7 @@ We used dynamic quantization for the models. Therefore weights and activations o
 <br>Target Precision: int8
 
 2. Why did you choose these models?
-</br><b>Answer: </b>We choose unet as it is the model we will use for our course project. We use suqeezenet and mobilenet because they are canonical for deploying model on the edge, and we should refer to them as our goal. As for resnet, we pick it because it is commonly use in many scenario.
+</br><b>Answer: </b>We choose unet as it is the model we will use for our course project. We use Shufflenet and mobilenet because they are canonical for deploying model on the edge, and we should refer to them as our goal. As for resnet, we pick it because it is commonly use in many scenario.
 
 3. For each model, you will measure model size (in (mega,giga,...)bytes), and inference latency. You will also be varying a parameter such as input size or batch size. What are your hypotheses for how the quantized models will compare to non-quantized models according to these metrics? Do you think latency will track with model size? Explain.
 </br><b>Answer: </b>The hypothesis is that the inference latency of the quantized models will be much lower than the non-quantized ones. Yes, we believe that latency will still track with the model size. Although the quantization reduced the complexity of the computations, the number of computation is still directly proportional to the model's size/paramters. Therefore, the latency will still increase when the model size increase.
@@ -54,7 +54,18 @@ We used dynamic quantization for the models. Therefore weights and activations o
    ```
    du -h <path-to-serialized-model>
    ```
+</br><b>Answer:</b>
+</br>
+| Model | Model Size - float32 (KB) | Model Size - int8 (KB) | Shrinkage (ratio)|
+| --- | ----------- | ----------- |----------- |
+| UNet | 1710.351 | 443.189 | 3.86 |
+| ShuffleNet | 9286.327 | 6215.103| 1.49 |
+| mobilenet_v3_small | 10303.615 | 5463.631 | 1.89 |
+| resnet18 | 46836.375| 45301.151| 1.03|
+
 2. Any difficulties you encountered here? Why or why not?
+</br><b>Answer:</b>
+</br> This part is straight forward. Therefore there is no difficulty encountered.
 
 4: Latency
 ----
