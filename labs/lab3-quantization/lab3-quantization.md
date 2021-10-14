@@ -6,9 +6,10 @@ Ideally, the models you benchmark will be the same as last class, but if you fin
 
 Include any code you write to perform this benchmarking in your Canvas submission (either as a link to a folder on github, in a shared drive, zip, etc).
 
-Group name:
+Group name: 1 tsp of sugars and 3 eggs
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
+
 
 1: Models
 ----
@@ -46,7 +47,10 @@ We used dynamic quantization for the models. Therefore weights and activations o
     ```
 4. Try changing the model to `mobilenet_v3_large` and set `quantize=False`. (Note that `quantize=True` may fail due to unsupported operations.) What happens?
 5. Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
+</br><b>Answer: </b> For Mobilenet_v3_large without quantization (set quantize=False) will output the prediction as "bluetick", and for Mobilenet_v2 with quantization (set quantize = True) will output the prediction as "Great Dane". The difference here we believe is caused by drop of accuracy of the quantized model. By directly checking the input image, we feel the ground truth should be closer to "bluetick" instead of "grreat dane", which indicate that the performance of the quantized model drag. 
+
 6. Any difficulties you encountered here? Why or why not?
+</br><b>Answer: </b> To run the quantized model on jetson nano (ARM device), we need to set the torch.backends.quantized.engine = "qnnpack" ourselves.
 
 3: Model size
 ----
@@ -65,7 +69,7 @@ We used dynamic quantization for the models. Therefore weights and activations o
 
 2. Any difficulties you encountered here? Why or why not?
 </br><b>Answer:</b>
-</br> This part is straight forward. Therefore there is no difficulty encountered.
+</br> Since pytorch doesn't suppor dynamic quantization for UNet, we use static quantization for UNet.
 
 4: Latency
 ----
@@ -87,10 +91,12 @@ We used dynamic quantization for the models. Therefore weights and activations o
 ![lab4_448x448](https://user-images.githubusercontent.com/90403016/137214838-1e908f36-b684-4127-88c5-734730ee65aa.png)
 
 3. Any difficulties you encountered here? Why or why not?
+</br><b>Answer:</b>Compare to the original model, the quanitzed ones run much faster. However, we observe that the inference speed does not always increase with the number of batch size but peak at batch size=8. This result is out of expectation, and is observed on both original and quantized models. Originally, we think the reason is because we use a for-loop to run the experiment with different batch size and input image dimension, and the system might fetch the data in advance to save time. Hence, we discard the for-loop but let every experiment has its own .py file to be excuted. However, it sill give us the same result. We believe this might caused by the CPU arhcitecture, which has the aligment conflict when the batchsize = 8, but this requires further investigation. 
 
 5: Discussion
 ----
 1. Analyze the results. Do they support your hypotheses? Why or why not? Did you notice any strange or unexpected behavior? What might be the underlying reasons for that behavior?
+</br><b>Answer:</b> For models applied dynamic quantization, we didn't see the inference speed become faster. Only UNet, which we manually applied static quantization has clear speed up. We believe this is because pytorch only supports linear layer quantization but all of our networks is CNN-based, meaning that most of the layers haven't been quantized. This fact can somehow be reflected on the size of the model in the previous section as well. 
 
 5: Extra
 ----
