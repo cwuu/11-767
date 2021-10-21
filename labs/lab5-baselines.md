@@ -4,9 +4,9 @@ The goal of this lab is for you to survey work related to your project, decide o
 
 Ideally, the outcome of this lab would be: (1) the related work section of your project report is written and (2) baselines have been benchmarked.
 
-Group name:
+Group name: 1 tsp of sugars and 3 eggs
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
 
 1: Related Work
 ----
