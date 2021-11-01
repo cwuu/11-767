@@ -35,7 +35,7 @@ Raymond:
 <br> - Explored static, dynamic and QAT quantization. Implemented a training script to apply Quantization-aware training for the model. Trained the model using the QAT schemes for 2000 epochs. <br>
 <br> - Identified two bottlenecks for the inference: 
 <br>     1. There is a slow preprocessing for step which involved manipulatio of the numpy arrays. 
-<br>     2. The size of the model is large such that part of it is located in the slow virtual memory.
+<br>     2. The size of the model is large such that part of it is located in the slow virtual memory.<br>
 <br> - For the quantitative evaluation of image quality, I found SSIM and PSNR are good indicators/metrics. As for the qualitative evaluation, one appropriate way is to use human to judge the quality of the output.<br>
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
