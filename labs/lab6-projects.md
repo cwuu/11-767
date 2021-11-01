@@ -30,9 +30,23 @@ Raymond:
 2: Execution
 ----
 1. What have you achieved today / this week? Was this more than you had planned to get done? If so, what do you think worked well?
-3. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
-4. What were the contributions of each group member towards all of the above?
+<br><b>Raymond</b>
+<br> - Compiled a necessary Rawpy package(no wheel for ARM64 system) on the Jetson Nano. <br>
+<br> - Explored static, dynamic and QAT quantization. Implemented a training script to apply Quantization-aware training for the model. Trained the model using the QAT schemes for 2000 epochs. <br>
+<br> - Identified two bottlenecks for the inference: 
+<br>     1. There is a slow preprocessing for step which involved manipulatio of the numpy arrays. 
+<br>     2. The size of the model is large such that part of it is located in the slow virtual memory.
+<br> - For the quantitative evaluation of image quality, I found SSIM and PSNR are good indicators/metrics. As for the qualitative evaluation, one appropriate way is to use human to judge the quality of the output.<br>
 
+2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
+<br><br><b>Raymond</b>
+<br>I tried to run the quantized model using the jit.load module of PyTorch. But somehow it pops up an erorr message:
+<img width="1030" alt="Screen Shot 2021-11-01 at 3 45 42 PM" src="https://user-images.githubusercontent.com/90403016/139735622-df231703-d638-42bc-842b-4f510e3d97e6.png"> It is found that currently the self implemented lrelu function is not supported. I am going to use the official torch.nn.LeakyReLU and replace that.
+<br>The second thing I tried was to use Numba (a JIT numpy acceleration module) to improve the execution efficiency of the slow prepcrossing step (which involved lots of numpy operations). It could not be compiled on the Jetson Nano platform. I was now trying to look for alternatives to replace that.
+
+3. What were the contributions of each group member towards all of the above?
+<br><b>Ans:</b>Each one of us explored different directions that are helpful for the project. Emily focused on improving the network structure while Raymond focused on quantization and preprocessing steps. We also found and defined different appropriate metrics for the evaluations.
+  
 3: Next steps
 ----
 1. Are you making sufficient progress towards completing your final project? Explain why or why not. If not, please report how you plan to change the scope and/or focus of your project accordingly.
