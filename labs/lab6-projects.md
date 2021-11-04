@@ -2,9 +2,11 @@ Lab 5: Group work on projects
 ===
 The goal of this lab is for you to make progess on your project, together as a group. You'll set goals and work towards them, and report what you got done, chaellenges you faced, and subsequent plans.
 
-Group name:
+
+Group name: 1 tsp of sugars and 3 eggs
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
+
 
 1: Plan
 ----
