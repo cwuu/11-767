@@ -54,4 +54,6 @@ Raymond:
 <br><b>Ans:</b> 
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
  <br><b>Ans:</b> 
+ 
+3. How will each group member contribute towards those steps? 
 <br><b>Ans:</b> Raymond and Emily will equally take half of the training and evaluation for the experiments the ablation study. And will discuss and analyze the result together. 
