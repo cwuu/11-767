@@ -35,11 +35,13 @@ Raymond:
 1. What have you achieved today / this week? Was this more than you had planned to get done? If so, what do you think worked well?
 <br><b>Raymond</b>
 <br>1. I have fixed the quantization error for lrelu. The model size has been reduced to 3.98x of the original size. Here are some results:
-| Model | Time for 25 (512x512) images |
-| --- | --- |
-| Original model | 325.00 |
-| Quantized model(qint8) | 51.11 |
-<br> It is found that the inference speed has been improved by 6.36x. The reason is that the quantized model can now completely fit into the fast physical memory. For the original model, part of the model and data are stored in the slow virtual memory(i.e. SD card). It takes a long time to access the data and the model in the slow virtual memory. The memory becomes a bottleneck for the inference speed.  
+
+    | Model | Time for 25 (512x512) images |
+    | --- | --- |
+    | Original model | 325.00 |
+    | Quantized model(qint8) | 51.11 |
+
+    It is found that the inference speed has been improved by 6.36x. The reason is that the quantized model can now completely fit into the fast physical memory. For the original model, part of the model and data are stored in the slow virtual memory(i.e. SD card). It takes a long time to access the data and the model in the slow virtual memory. The memory becomes a bottleneck for the inference speed.  
 
 <br>Attached some of the examples
 ![00012_00_train_250 0](https://user-images.githubusercontent.com/90403016/141134057-00d5cfaa-c739-419c-a90c-52c81e557e4a.jpg)
@@ -54,6 +56,7 @@ Raymond:
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
+<br>I hoped to implement the script for checking the Structural Similarity Index and the Peak signal-to-noise ratio. The formula of SSIM is complex and therefore I took sometime to understand the try to figure out the implementaiton. I believed that this would take a long time to implement that and therefore I am now seeking alternatives/implemented codes.
 
 <br><br><b>Emily</b><br>
 
@@ -65,8 +68,10 @@ Raymond:
 ----
 1. Are you making sufficient progress towards completing your final project? Explain why or why not. If not, please report how you plan to change the scope and/or focus of your project accordingly.
 <br><b>Ans:</b> 
+From the preliminary results, we believe that we are making progress towards completing our final project. The reason is that the visual quality of output from the quantized model/with fire module are satisfactory. Up to now, there is no unexpected outcome. Therefore, we can continue the directions and seek other techniques to optimize the inference speed/visual quality/metrics.
+
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
  <br><b>Ans:</b> 
- 
+Implemented a unified script to find the quantized metrics. And to combine the fire module with the quantization aware training. 
 3. How will each group member contribute towards those steps? 
 <br><b>Ans:</b> Raymond and Emily will equally take half of the training and evaluation for the experiments the ablation study. And will discuss and analyze the result together. 
