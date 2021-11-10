@@ -34,7 +34,20 @@ Raymond:
 ----
 1. What have you achieved today / this week? Was this more than you had planned to get done? If so, what do you think worked well?
 <br><b>Raymond</b>
+<br>1. I have fixed the quantization error for lrelu. The model size has been reduced to 3.98x of the original size. Here are some results:
+| Model | Time for 25 (512x512) images |
+| --- | --- |
+| Original model | 325.00 |
+| Quantized model(qint8) | 51.11 |
+<br> It is found that the inference speed has been improved by 6.36x. The reason is that the quantized model can now completely fit into the fast physical memory. For the original model, part of the model and data are stored in the slow virtual memory(i.e. SD card). It takes a long time to access the data and the model in the slow virtual memory. The memory becomes a bottleneck for the inference speed.  
 
+<br>Attached some of the examples
+![00012_00_train_250 0](https://user-images.githubusercontent.com/90403016/141134057-00d5cfaa-c739-419c-a90c-52c81e557e4a.jpg)
+![00043_00_train_250 0](https://user-images.githubusercontent.com/90403016/141134166-31841c5e-4685-4e06-b4f3-83440a00fdd7.jpg)
+
+<br>From the above outputs, the visual quality are satisfactory. I believe more works including the fire module can be further incoporate.
+
+<br>2. Besides, the time for the pre-processing step, which involved lots of numpy concatenation, has been estimated. It is found that the time for one image is just around 0.25s, which is just around 0.5% for the whole processing time. Therefore, we will put focus on other area instead of compiling the Numba module.
 
 <br><b>Emily</b>
 
