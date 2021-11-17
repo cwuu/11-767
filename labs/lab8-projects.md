@@ -36,6 +36,8 @@ Raymond:
 <br>1. I have combined the quantization aware training with the depthwise seperable convolution. After around 3500 epochs of training, the results are comparable to the images with only the QAT. The difference in loss is around ~13%. It seems that we should be able to combine them together.
 
 Here are some samples:
+![00037_00_train_250 0](https://user-images.githubusercontent.com/90403016/142273346-d2327009-2403-4d63-96c6-87f2c71f805c.jpg)
+![00084_00_train_300 0](https://user-images.githubusercontent.com/90403016/142273411-956631c2-bdb7-4cfc-8373-78391a2e8be2.jpg)
 
 
 
