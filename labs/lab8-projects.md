@@ -55,13 +55,13 @@ Here are some samples:
 | Lighter-UNet  | 1513812 (5.13x smaller) |
 
 <br>Here are some visulization results of Light-UNet(8000 iters/ 8000 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light2.png)
-[00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light3.png)
+ ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light1.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light2.png)
+[00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light3.png)
 <br>Here are some visulization results of Lighter-UNet(5500 iters/ 5500 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter2.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter3.png)
+ ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter1.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter2.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter3.png)
 <br>2. I wrote the evaluation script for measuring the quantitative results on the testing and training set. For the quantitative metrices, I picked SSIM, PSNR and MSE; for qualitative metrices, we plan to conduct a survey from real person to check which model generates the output that is best aligned with human's visual system.
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
