@@ -54,20 +54,21 @@ Here are some samples:
 | Light-UNet  | 4285676 (1.81x smaller)  |
 | Lighter-UNet  | 1513812 (5.13x smaller) |
 
-<br>Here are some visulization results of Light-UNet(2000 iters/ 4000 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab7-img/light1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab7-img/light2.png)
-<br>Here are some visulization results of Lighter-UNet(1100 iters/ 4000 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab7-img/lighter1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab7-img/lighter2.png)
-
-After the model is fully trained, we will integrated it with the quantization method to get the final number on how much we can improve on the inferecne speed.
+<br>Here are some visulization results of Light-UNet(8000 iters/ 8000 iters):
+ ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light1.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light2.png)
+[00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/light3.png)
+<br>Here are some visulization results of Lighter-UNet(5500 iters/ 5500 iters):
+ ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter1.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter2.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab8-img/lighter3.png)
+<br>2. I wrote the evaluation script for measuring the quantitative results on the testing and training set. For the quantitative metrices, I picked SSIM, PSNR and MSE; for qualitative metrices, we plan to conduct a survey from real person to check which model generates the output that is best aligned with human's visual system.
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
 <br>I hoped to run the inference on the Jetson but somehow an error pops up. The error message is not very meaningful and not be able to find any similar case on the internet. I will look into the quantization module of Pytorch and try to find a solution/fix the problem.
-
-<br><br><b>Emily</b><br>
+<br><br><b>Emily</b>
+<br>The evaluation script now is suffered from memory usage, which required further optimization.
 
 
 3. What were the contributions of each group member towards all of the above?
@@ -76,10 +77,9 @@ After the model is fully trained, we will integrated it with the quantization me
 3: Next steps
 ----
 1. Are you making sufficient progress towards completing your final project? Explain why or why not. If not, please report how you plan to change the scope and/or focus of your project accordingly.
-<br><b>Ans:</b> 
+<br><b>Ans:</b> Yes, we are making incremental progress. 
 
 
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
- <br><b>Ans:</b> 
-
+ <br><b>Ans:</b> We will conduct the survey to check the human visual system for the quality of image reconstruction. Also, we will start the quantitative evaluation for the inference speed and energy usage.  
 <br><b>Ans:</b> Raymond and Emily will equally take half of the training and evaluation for the experiments the ablation study. And will discuss and analyze the result together. 
