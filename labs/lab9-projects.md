@@ -40,7 +40,7 @@ Raymond:
     | --- | --- |
     | Original model | 325.00 |
     | Quantized model(qint8) | 51.11 |
-    | Quantized + Depthwise seperable | 52|
+    | Quantized model(qint8) + Depthwise seperable conv | 52.02
     
  <br> On the other hand, it is observed that the quality of the pictures do not change much even with the two optimisations.
  ![00049_00_train_100 0](https://user-images.githubusercontent.com/90403016/143138179-9f786e1c-110a-4987-acca-42d4e96c81e5.jpg)
