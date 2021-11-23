@@ -11,10 +11,10 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 1: Plan
 ----
 1. What is your plan for today, and this week <br/>
-1.1 Today: Discuss the problems encountered and plan for the next sprint. <br/>
-1.2 This week: Combine the QAT (quantization-aware training) with the depthwise seperable convolution. <br/>
-1.3 This week: Based on the results, investigate any other bottleneck of inferencing. <br/>
-1.4 This week: Inspect the output and see how the image quality change. Then brainstorm/propose any other new directions. <br/>
+1.1 Today: Discuss why the inference speed does not change much after depthwise seperable convolution and plan for the next sprint. <br/>
+1.2 This week: Conduct more experiments on the depthwise seperable convolution and see if there is any change of the inference speed. <br/>
+1.3 This week: Seek any alternative to further optimize the model while preserving the visual quality. <br/>
+1.4 This week: Setup a google survey form/other medium to collect the qualitative results. <br/>
 
 2. How will each group member contribute towards this plan?<br/>
 Emily:
@@ -36,12 +36,13 @@ Raymond:
 
 <br>2. After solving the technical problem, it is fonud that inference time for the optimized model (QAT + Depthwise seperable convolution) does not change much.
 
-    | Model | Time for 25 (512x512) images |
-    | --- | --- |
-    | Original model | 325.00 |
-    | Quantized model(qint8) | 51.11 |
-    | Quantized model(qint8) + Depthwise seperable conv | 52.02
-    
+
+| Model  | Time for 25 (512x512) images |
+| ------------- | ------------- |
+| Original model  | 325.00  |
+| Quantized model(qint8)  | 51.11  |
+| Quantized model(qint8) + depthwise seperable conv | 52.0 |
+
  <br> On the other hand, it is observed that the quality of the pictures do not change much even with the two optimisations.
  ![00049_00_train_100 0](https://user-images.githubusercontent.com/90403016/143138179-9f786e1c-110a-4987-acca-42d4e96c81e5.jpg)
 ![00083_00_train_300 0](https://user-images.githubusercontent.com/90403016/143138204-18e3caeb-84cc-41e3-97ee-dad8246f5ba3.jpg)
@@ -51,32 +52,16 @@ Raymond:
  
 
 <br><b>Emily</b>
-<br>1. I integrated depthwise seperable layers into UNet. There are 2 types of UNet, one is light-UNet, which only have the first convlution layer in each stack become depthwise seperable layer and the other remain the same as the traditional convolution layer; the other is lighter-UNet, which both of the convolution layer in the stack become depthwise seperable layers. They are both still in the training stage. The following is the summary of the number of the parameters for each version of the UNets:<br>
-| Model  | Num of Params |
-| ------------- | ------------- |
-| Original model  | 7760748  |
-| Light-UNet  | 4285676 (1.81x smaller)  |
-| Lighter-UNet  | 1513812 (5.13x smaller) |
-
-<br>Here are some visulization results of Light-UNet(8000 iters/ 8000 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light2.png)
-[00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/light3.png)
-<br>Here are some visulization results of Lighter-UNet(5500 iters/ 5500 iters):
- ![00012_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter1.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter2.png)
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab8-img/lighter3.png)
-<br>2. I wrote the evaluation script for measuring the quantitative results on the testing and training set. For the quantitative metrices, I picked SSIM, PSNR and MSE; for qualitative metrices, we plan to conduct a survey from real person to check which model generates the output that is best aligned with human's visual system.
+<br>1. 
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
 <br>I tried to use CUDA for the inference as the model size has been compressed. But it turns out that Jetson Nano does not support INT8 inference. It is due to the hardware constraint and hence not possible to solve it. One alternative is to use float16 quantization.
 <br><br><b>Emily</b>
-<br>The evaluation script now is suffered from memory usage, which required further optimization.
 
 
 3. What were the contributions of each group member towards all of the above?
-<br><b>Ans:</b>Each one of us explored possible directions that can further optimize the original model. Emily focused on improving the network structure while Raymond focused on increasing the level of optimizations and doing different experiments while Emily is preparingt the necessary scripts for benchmarking and survey. We also confirmed some qualitative and quantitative metrics for the evaluations.
+<br><b>Ans:</b>Each one of us explored possible directions that can further optimize the original model. Raymond focused on increasing the level of optimizations and doing different experiments while Emily is preparingt the necessary scripts for benchmarking and survey. We also confirmed some qualitative and quantitative metrics for the evaluations.
   
 3: Next steps
 ----
@@ -86,5 +71,6 @@ Raymond:
 
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
  <br><b>Ans:</b> We will try to further optimize the model using the lighter model (with more extreme) Then, we will try to generate more images (different settings) and conduct the survey to check the human visual system for the quality of image reconstruction. Besides, we will measure the energy usages for the 3 models (original, quantized + depthwise seperable convolution, quantized + extreme depthwise seperable convolution).
- 
+
+3. How will each group member contribute towards those steps? 
 <br><b>Ans:</b> Raymond and Emily will equally take half of the training and evaluation for the experiments the ablation study. And will discuss and analyze the result together. 
