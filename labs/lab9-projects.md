@@ -31,9 +31,21 @@ Raymond:
 1. What have you achieved today / this week? Was this more than you had planned to get done? If so, what do you think worked well?
 <br><b>Raymond</b>
 <br>1. Looked into the problem of the following error message:
-<img width="571" alt="Screen Shot 2021-11-17 at 1 45 54 PM" src="https://user-images.githubusercontent.com/90403016/142262968-90e07c58-9fc3-4917-8fb7-d00a15403d67.png">. It is found that the root cause of this problem is the mismatch torch.vision package. Currently the model trained on the server using PyTorch 1.10 and torchvision 0.11. When the quantized module is saved using the JIT module, extra values (eg: hook, in this case) are stored. On the Jetson nano, the torchvision module is version 0.9. It cannot load the values stored and triggered the problem. After reinstallation of the torchvision module on the serverside, the network is able to be loaded in the Jetson Nano. 
+<img width="571" alt="Screen Shot 2021-11-17 at 1 45 54 PM" src="https://user-images.githubusercontent.com/90403016/142262968-90e07c58-9fc3-4917-8fb7-d00a15403d67.png">. 
+<br>It is found that the root cause of this problem is the mismatch torch.vision package. Currently the model trained on the server using PyTorch 1.10 and torchvision 0.11. When the quantized module is saved using the JIT module, extra values (eg: hook, in this case) are stored. On the Jetson nano, the torchvision module is version 0.9. It cannot load the values stored and triggered the problem. After reinstallation of the torchvision module on the serverside, the network is able to be loaded in the Jetson Nano. 
 
-<br>2. 
+<br>2. After solving the technical problem, it is fonud that inference time for the optimized model (QAT + Depthwise seperable convolution) does not change much.
+
+    | Model | Time for 25 (512x512) images |
+    | --- | --- |
+    | Original model | 325.00 |
+    | Quantized model(qint8) | 51.11 |
+    | Quantized + Depthwise seperable | 52|
+    
+ <br> On the other hand, it is observed that the quality of the pictures do not change much even with the two optimisations.
+ ![00049_00_train_100 0](https://user-images.githubusercontent.com/90403016/143138179-9f786e1c-110a-4987-acca-42d4e96c81e5.jpg)
+![00083_00_train_300 0](https://user-images.githubusercontent.com/90403016/143138204-18e3caeb-84cc-41e3-97ee-dad8246f5ba3.jpg)
+
 
 
  
@@ -58,20 +70,21 @@ Raymond:
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
-<br>I hoped to run the inference on the Jetson but somehow an error pops up. The error message is not very meaningful and not be able to find any similar case on the internet. I will look into the quantization module of Pytorch and try to find a solution/fix the problem.
+<br>I tried to use CUDA for the inference as the model size has been compressed. But it turns out that Jetson Nano does not support INT8 inference. It is due to the hardware constraint and hence not possible to solve it. One alternative is to use float16 quantization.
 <br><br><b>Emily</b>
 <br>The evaluation script now is suffered from memory usage, which required further optimization.
 
 
 3. What were the contributions of each group member towards all of the above?
-<br><b>Ans:</b>Each one of us explored different directions that are helpful for the project. Emily focused on improving the network structure while Raymond focused on quantization and preprocessing steps. We also found and defined different appropriate metrics for the evaluations.
+<br><b>Ans:</b>Each one of us explored possible directions that can further optimize the original model. Emily focused on improving the network structure while Raymond focused on increasing the level of optimizations and doing different experiments while Emily is preparingt the necessary scripts for benchmarking and survey. We also confirmed some qualitative and quantitative metrics for the evaluations.
   
 3: Next steps
 ----
 1. Are you making sufficient progress towards completing your final project? Explain why or why not. If not, please report how you plan to change the scope and/or focus of your project accordingly.
-<br><b>Ans:</b> Yes, we are making incremental progress. 
+<br><b>Ans:</b> Yes, we are making progress step-by-step.
 
 
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
- <br><b>Ans:</b> We will conduct the survey to check the human visual system for the quality of image reconstruction. Also, we will start the quantitative evaluation for the inference speed and energy usage.  
+ <br><b>Ans:</b> We will try to further optimize the model using the lighter model (with more extreme) Then, we will try to generate more images (different settings) and conduct the survey to check the human visual system for the quality of image reconstruction. Besides, we will measure the energy usages for the 3 models (original, quantized + depthwise seperable convolution, quantized + extreme depthwise seperable convolution).
+ 
 <br><b>Ans:</b> Raymond and Emily will equally take half of the training and evaluation for the experiments the ablation study. And will discuss and analyze the result together. 
