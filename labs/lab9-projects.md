@@ -1,4 +1,4 @@
-Lab 7: Group work on projects
+Lab 8: Group work on projects
 ===
 The goal of this lab is for you to make progess on your project, together as a group. You'll set goals and work towards them, and report what you got done, chaellenges you faced, and subsequent plans.
 
@@ -18,31 +18,23 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 
 2. How will each group member contribute towards this plan?<br/>
 Emily:
-- Continue the developmen of fire modules.
-- Inspect the results and propose any improvements.
-- Estimate the memory usage and find any technique that can further applied.
-- Investigate any other bottleneck of inferencing.
+
 
 Raymond:
-- Combine the depthwise seperable convolution with the QAT.
+- Solve the error/technical issue of QAT depthwise seperable convolution with the QAT.
+- Try to use CUDA for inference.
 - Check the results and see if there is any problem when combining the two optimizations methods.
-- Estimate the memory usage and find that if CUDA is applicable in this case.
 - Investigate any other bottleneck of inferencing.
 
 2: Execution
 ----
 1. What have you achieved today / this week? Was this more than you had planned to get done? If so, what do you think worked well?
 <br><b>Raymond</b>
-<br>1. I have combined the quantization aware training with the depthwise seperable convolution. After around 3500 epochs of training, the results are comparable to the images with only the QAT. The difference in loss is around ~13%. It seems that we should be able to combine them together.
+<br>1. Looked into the problem of the following error message:
+<img width="571" alt="Screen Shot 2021-11-17 at 1 45 54 PM" src="https://user-images.githubusercontent.com/90403016/142262968-90e07c58-9fc3-4917-8fb7-d00a15403d67.png">. It is found that the root cause of this problem is the mismatch torch.vision package. Currently the model trained on the server using PyTorch 1.10 and torchvision 0.11. When the quantized module is saved using the JIT module, extra values (eg: hook, in this case) are stored. On the Jetson nano, the torchvision module is version 0.9. It cannot load the values stored and triggered the problem. After reinstallation of the torchvision module on the serverside, the network is able to be loaded in the Jetson Nano. 
 
-Here are some samples:
-![00037_00_train_250 0](https://user-images.githubusercontent.com/90403016/142273346-d2327009-2403-4d63-96c6-87f2c71f805c.jpg)
-![00084_00_train_300 0](https://user-images.githubusercontent.com/90403016/142273411-956631c2-bdb7-4cfc-8373-78391a2e8be2.jpg)
+<br>2. 
 
-
-
-<br>2. However, there are some problems when trying to call the model and inference. The error message is shown below:
-<img width="571" alt="Screen Shot 2021-11-17 at 1 45 54 PM" src="https://user-images.githubusercontent.com/90403016/142262968-90e07c58-9fc3-4917-8fb7-d00a15403d67.png">
 
  
 
