@@ -69,12 +69,13 @@ def calculate_ssim(img1, img2):
 
 def pack_raw(raw):
     #pack Bayer image to 4 channels
-    im = np.maximum(raw - 512,0)/ (16383 - 512) #subtract the black level
+    im = np.maximum(raw - 512, 0)/ (16383 - 512) #subtract the black level
 
     im = np.expand_dims(im,axis=2) 
     img_shape = im.shape
-    H = img_shape[0]
-    W = img_shape[1]
+
+    H = img_shape[0] 
+    W = img_shape[1] 
 
     out = np.concatenate((im[0:H:2,0:W:2,:], 
                        im[0:H:2,1:W:2,:],
@@ -84,7 +85,8 @@ def pack_raw(raw):
 
 def evaluate(args):
 
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    #device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = 'cpu'
     print(f"Device: {device}")
 
     #get train and test IDs
@@ -108,8 +110,9 @@ def evaluate(args):
         model = Lighter_SeeInDark()
     else:
         raise NotImplementedError # add your quantize model here
+
     model_path = args['model_dir'] + "_%s" % (args['arch']) + args['model_name']
-    print(model_path)
+    #print(model_path)
     model.load_state_dict(torch.load(model_path ,map_location={'cuda:1':'cuda:0'}))
     model = model.to(device)
 
@@ -119,9 +122,10 @@ def evaluate(args):
     else:
         dataset = train_ids 
         result_dir = os.path.join("eval", args['result_dir']+"_%s" % (args['arch']), "train", args['arch'])
-    print(result_dir)
+    #print(result_dir)
     os.makedirs(result_dir, exist_ok=True)
     avg_ssim, avg_psnr, avg_mse = [], [], []
+    print("num of data %d" % (len(dataset)))
     for test_id in dataset:
         #test the first image in each sequence
         in_files = glob.glob(args['input_dir'] + '%05d_00*.ARW'%test_id)
@@ -173,13 +177,14 @@ def evaluate(args):
                 Image.fromarray((output*255).astype('uint8')).save(result_dir + '/%5d_00_%d_out.png'%(test_id,ratio))
                 #Image.fromarray((scale_full*255).astype('uint8')).save(result_dir + '%5d_00_%d_scale.png'%(test_id,ratio))
                 Image.fromarray((gt_full*255).astype('uint8')).save(result_dir + '/%5d_00_%d_gt.png'%(test_id,ratio))
-        avg_ssim = np.array(avg_ssim).mean()
-        avg_psnr = np.array(avg_psnr).mean()
-        avg_mse = np.array(avg_mse).mean()
-        f = open(os.path.join(result_dir, 'result.txt'), 'a')
-        f.write('\n')
-        f.write("%f %f %f" % (avg_ssim, avg_psnr, avg_mse))
-        f.close()
+    avg_ssim = np.array(avg_ssim).mean()
+    avg_psnr = np.array(avg_psnr).mean()
+    avg_mse = np.array(avg_mse).mean()
+    f = open(os.path.join(result_dir, 'result.txt'), 'a')
+    f.write('\n')
+    f.write("%f %f %f" % (avg_ssim, avg_psnr, avg_mse))
+    f.close()
+    print("%f %f %f" % (avg_ssim, avg_psnr, avg_mse))
 
 
 
