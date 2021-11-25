@@ -52,7 +52,7 @@ Raymond:
 
 <br><b>Emily</b>
 <br>1. Evaluation script to generate the qualitative results and quantitve metrics is completed. Demo is shown as the following and we will use the generated testing images to design the google survey.
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab9-img/test.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab9-img/test.png)
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
@@ -60,7 +60,7 @@ Raymond:
 <br><br><b>Emily</b>
 <br><br><b>Emily</b>
 <br> The evaluation couldn't feed in single GPU's memory, which always make the program crash in the middle of evaluating our testing sets. I use cpu to run the evaluation program to get rid of this issue temporarily since our testing set is small. However, I plan to expedite the evaluatino using mutiprocessing as we have 64 cpu in total.
-![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab9-img/cuda_memory_issue.png)
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/labs/lab9-img/cuda_memory_issue.png)
 3. What were the contributions of each group member towards all of the above?
 <br><b>Ans:</b>Each one of us explored possible directions that can further optimize the original model. Raymond focused on increasing the level of optimizations and doing different experiments while Emily is preparingt the necessary scripts for benchmarking and survey. We also confirmed some qualitative and quantitative metrics for the evaluations.
   
