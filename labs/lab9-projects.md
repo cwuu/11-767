@@ -18,7 +18,8 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 
 2. How will each group member contribute towards this plan?<br/>
 Emily:
-
+- Code the evaluation script to generate images collection for coduing google survey
+- Code and run the calculation for quantitative evaluation metrics for the testing images  
 
 Raymond:
 - Solve the error/technical issue of QAT depthwise seperable convolution with the QAT.
@@ -49,17 +50,17 @@ Raymond:
 
 
 
- 
-
 <br><b>Emily</b>
-<br>1. 
+<br>1. Evaluation script to generate the qualitative results and quantitve metrics is completed. Demo is shown as the following and we will use the generated testing images to design the google survey.
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab9-img/test.png)
 
 2. Was there anything you had hoped to achieve, but did not? What happened? How did you work to resolve these challenges?
 <br><br><b>Raymond</b>
 <br>I tried to use CUDA for the inference as the model size has been compressed. But it turns out that Jetson Nano does not support INT8 inference. It is due to the hardware constraint and hence not possible to solve it. One alternative is to use float16 quantization.
 <br><br><b>Emily</b>
-
-
+<br><br><b>Emily</b>
+<br> The evaluation couldn't feed in single GPU's memory, which always make the program crash in the middle of evaluating our testing sets. I use cpu to run the evaluation program to get rid of this issue temporarily since our testing set is small. However, I plan to expedite the evaluatino using mutiprocessing as we have 64 cpu in total.
+![00043_00_train_250 0](https://github.com/cwuu/11-767/blob/main/lab9-img/cuda_memory_issue.png)
 3. What were the contributions of each group member towards all of the above?
 <br><b>Ans:</b>Each one of us explored possible directions that can further optimize the original model. Raymond focused on increasing the level of optimizations and doing different experiments while Emily is preparingt the necessary scripts for benchmarking and survey. We also confirmed some qualitative and quantitative metrics for the evaluations.
   
