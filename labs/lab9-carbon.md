@@ -2,9 +2,9 @@ Lab 9: Carbon footprint
 ===
 The goal of this lab is for you estimate the carbon footprint of your class project.
 
-Group name:
+Group name: 1 tsp of sugars and 3 eggs
 ---
-Group members present in lab today:
+Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b>
 
 1: Inference
 ----
