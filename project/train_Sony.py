@@ -33,7 +33,7 @@ def pack_raw(raw):
     return out
 
 def train(quantized_model):
-    for epoch in range(lastepoch,20000):
+    for epoch in range(lastepoch,4000):
         if os.path.isdir("result/%04d"%epoch):
             continue    
         cnt=0
@@ -99,6 +99,7 @@ def train(quantized_model):
             opt.zero_grad()
             #quantized_model.zero_grad()
             out_img = quantized_model(in_img)
+            import pdb; pdb.set_trace()
 
             loss = reduce_mean(out_img, gt_img)
             loss.backward()
@@ -120,31 +121,20 @@ def train(quantized_model):
                 
                 temp = np.concatenate((gt_patch[0,:,:,:], output[0,:,:,:]),axis=1)
                 Image.fromarray((temp*255).astype('uint8')).save(epoch_result_dir + f'{train_id:05}_00_train_{ratio}.jpg')
-                torch.save(quantized_model.state_dict(), model_dir+'checkpoint_sony_e%04d.pth'%epoch)
+                #torch.save(quantized_model.state_dict(), model_dir+'checkpoint_sony_e%04d.pth'%epoch)
 
                 #Save the quantization model
-                quantized_model.to(cpu_device)
                 temp_model = copy.deepcopy(quantized_model)
-
                 temp_model.eval()
-                #remove_attributes = []
-                #for key, value in vars(temp_model).items():
-                #    if value is None:
-                #        remove_attributes.append(key)
+                temp_model.to(cpu_device)
 
-                #for key in remove_attributes:
-                #    delattr(temp_model, key)
+                torch.quantization.convert(temp_model, inplace=True)
+                temp_model.eval()
 
-                converted_quantized_model = torch.quantization.convert(temp_model)
-                converted_quantized_model.eval()
-
-                import pickle
-                with open('./' + str(epoch) + '_' + 'converted_quantized_model.pickle', 'wb') as handle:
-                    pickle.dump(converted_quantized_model, handle, protocol=pickle.HIGHEST_PROTOCOL)
-                torch.save(temp_model.state_dict(), './' + str(epoch) + '_' + 'quantized_model.pth')
                 jit_name = './' + str(epoch) + '_' + 'quantized_model.jit'
-                torch.jit.save(torch.jit.script(converted_quantized_model), jit_name)
-                quantized_model.to(device) #Switch back to GPU
+                torch.jit.save(torch.jit.script(temp_model), jit_name)
+
+                #quantized_model.to(device) #Switch back to GPU
                 
 def reduce_mean(out_im, gt_im):
     return torch.abs(out_im - gt_im).mean()
@@ -199,59 +189,26 @@ for folder in allfolders:
     lastepoch = np.maximum(lastepoch, int(folder[-4:]))
 
 learning_rate = 1e-4
-model = SeeInDark().to(device)
-#model = Light_SeeInDark().to(device)
-#model = Lighter_SeeInDark().to(device)
-#model = Light_SeeInDark_Rewrite().to(device)
+
+#Put into cpu_device and set eval()
+model = SeeInDark().to(cpu_device)
 pretrained_path = '/home/ubuntu/Mobile-Low-Light-Photography-main/saved_model_base/checkpoint_sony_e4000.pth'
-model.load_state_dict(torch.load(pretrained_path, map_location=device))
+model.load_state_dict(torch.load(pretrained_path, map_location=cpu_device))
+
+#model = Light_SeeInDark().to(cpu_device)
+#model = Lighter_SeeInDark().to(cpu_device)
+#model = Light_SeeInDark_Rewrite().to(cpu_device)
+model.eval()
 
 
-#Trying to load the quantized weight
-#quantization_config = torch.quantization.get_default_qconfig("qnnpack")
-#model.qconfig = quantization_config
-#model.train()
-#model.to(device)
-#test = Quantized_SeeInDark(model_fp32=model)
-#test.qconfig = quantization_config
-#torch.quantization.prepare_qat(test, inplace=True)
-#import pdb; pdb.set_trace()
-#test.to(cpu_device)
-#test.eval()
-#test = torch.quantization.convert(test)
-#test.load_state_dict(torch.load('/home/ubuntu/Mobile-Low-Light-Photography-main/0_quantized_model.pth' , map_location=torch.device('cpu')))
-#import pdb; pdb.set_trace()
-
-
-#Not able to perform model fusion -- just do quantization
-#torch.backends.quantized.engine = 'qnnpack'
-#model.load_state_dict(torch.load('./saved_model/checkpoint_sony_e4000.pth', map_location=device))
-quantization_config = torch.quantization.get_default_qconfig("qnnpack") #for support of ConvTranspose
-model.train()
-model.qconfig = quantization_config
-model.to(device)
+#Skip model fusion, just do quantization
 quantized_model = Quantized_SeeInDark(model_fp32=model)
-#
-#Prepare the model
-#import pdb; pdb.set_trace()
+quantization_config = torch.quantization.get_default_qconfig("qnnpack")
+quantized_model.qconfig = quantization_config
+#Prepare the model for QAT
 torch.quantization.prepare_qat(quantized_model, inplace=True)
-#import pdb; pdb.set_trace()
 print("Training QAT Model...")
 quantized_model.train()
-quantized_model.qconfig = quantization_config
+quantized_model.to(device)
 opt = optim.Adam(quantized_model.parameters(), lr = learning_rate)
 train(quantized_model)
-
-#Convert the model
-#quantized_model.eval()
-#quantized_model.to(cpu_device)
-#quantized_model = torch.quantization.convert(quantized_model)
-#print(quantized_model)
-#torch.save(model.state_dict(), "./quantized_model.pth")
-#torch.jit.save(torch.jit.script(quantized_model), './quantized_model.jit')
-
-
-
-
-    
-    
