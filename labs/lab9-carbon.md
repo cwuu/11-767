@@ -26,10 +26,13 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 
 The following watts are estimated baesd on the tool provided (https://mlco2.github.io/impact/#compute)
 
-| Model         | Power usage   |
-| ------------- | ------------- |
-| UNet-QAT      | Content Cell  |
-| UNet-Lighter  | Content Cell  |
+| Model         | Time for training 1 epoch | Hours for the training   | Power usage |
+| ------------- | ------------- | ------------- | ------------- |
+| UNet-QAT      | Content Cell  | ------------- | ------------- |
+| UNet-Light    | Content Cell  | ------------- | ------------- |
+| UNet-Lighter  | Content Cell  | ------------- | ------------- |
+| UNet-Light-QAT  | Content Cell  | ------------- | ------------- |
+| UNet-Lighter-QAT  | Content Cell  | ------------- | ------------- |
 
 3: Extra
 ----
