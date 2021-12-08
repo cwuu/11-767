@@ -22,13 +22,13 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 <br>   1. 4000 epochs for each model variant
 <br>   2. Ignore some overhead time (eg: powering up the machine, other background tasks etc) since the training consumes the most large portion of power.
 <br>   3. Round to the closest hour
-<br>The machine we used for training is one AWS instance and the display card is Tesla V100-SXM2-16GB
+<br>The machine we used for training is one AWS instance, display card is Tesla V100-SXM2-16GB and the region is N.Virginia.
 
 The following watts are estimated baesd on the tool provided (https://mlco2.github.io/impact/#compute)
 
-| Model         | Time for training 1 epoch | Hours for the training   | Power usage |
+| Model         | Time for training 1 epoch (s) | Hours for the training   | Carbon emitted (kg) |
 | ------------- | ------------- | ------------- | ------------- |
-| UNet-QAT      | Content Cell  | ------------- | ------------- |
+| UNet-QAT      | 40.25  | 45 (44.72) | ------------- |
 | UNet-Light    | Content Cell  | ------------- | ------------- |
 | UNet-Lighter  | Content Cell  | ------------- | ------------- |
 | UNet-Light-QAT  | Content Cell  | ------------- | ------------- |
