@@ -17,6 +17,20 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 ----
 1. Did your project require training a model? If so, compute that estimate as well. If you used cloud resources, you can use [this tool](https://mlco2.github.io/impact/#compute) to help estimate. Otherwise, try to use the methods discussed last class for estmating carbon footprint due to training. Show your work and explain.
 
+<br>Yes, for our project we need to re-train the model.
+<br>We have the following assumptions/settings to estimate the power usage.:
+<br>   1. 4000 epochs for each model variant
+<br>   2. Ignore some overhead time (eg: powering up the machine, other background tasks etc) since the training consumes the most large portion of power.
+<br>   3. Round to the closest hour
+<br>The machine we used for training is one AWS instance and the display card is Tesla V100-SXM2-16GB
+
+The following watts are estimated baesd on the tool provided (https://mlco2.github.io/impact/#compute)
+
+| Model         | Power usage   |
+| ------------- | ------------- |
+| UNet-QAT      | Content Cell  |
+| UNet-Lighter  | Content Cell  |
+
 3: Extra
 ----
 1. Everything else: Do you have logs you can use to estimate the amount of energy + carbon that went in to all project development? Other ways of estimating? Was your device plugged in and running for the entire semester?
