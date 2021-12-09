@@ -56,9 +56,9 @@ The following watts are estimated baesd on the tool provided (https://mlco2.gith
 
 | Model         | Time for training 1 epoch (s) | Training time for 4000 epochs(h)   | Carbon emitted (kg) |
 | ------------- | ------------- | ------------- | ------------- |
-| UNet-QAT      | 40.25  | 45 (44.72) | ------------- |
-| UNet-Light    | 35.19  | 39 (39.10) | ------------- |
-| UNet-Lighter  | Content Cell  | ------------- | ------------- |
+| UNet-QAT      | 40.25  | 44.72 | 4.14 |
+| UNet-Light    | 35.19  | 39.10 | 3.62 |
+| UNet-Lighter  | 38.06  | 42.29 | 3.91 |
 
 3: Extra
 ----
