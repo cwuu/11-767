@@ -26,10 +26,10 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 
 The following watts are estimated baesd on the tool provided (https://mlco2.github.io/impact/#compute)
 
-| Model         | Time for training 1 epoch (s) | Hours for the training   | Carbon emitted (kg) |
+| Model         | Time for training 1 epoch (s) | Training time for 4000 epochs(h)   | Carbon emitted (kg) |
 | ------------- | ------------- | ------------- | ------------- |
 | UNet-QAT      | 40.25  | 45 (44.72) | ------------- |
-| UNet-Light    | Content Cell  | ------------- | ------------- |
+| UNet-Light    | 35.19  | 39 (39.10) | ------------- |
 | UNet-Lighter  | Content Cell  | ------------- | ------------- |
 
 3: Extra
