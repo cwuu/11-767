@@ -9,8 +9,36 @@ Group members present in lab today: <b>Emily Wuu(cwuu), Raymond Lau(kwunfunl)</b
 1: Inference
 ----
 1. Plug your device in to the Kill-a-watt and run inference using your model to get a measurement of the energy draw. What is its baseline energy draw, and how does that compare to running inference?
+
+Answer:
+
+| Configuration          | Energy Draw (Watt) |
+|------------------------|--------------------|
+| Baseline (UNet)        | 8.2                |
+| Light (UNet)           | 6.3                |
+| Lighter (UNet)         | 6.1                |
+
 2. Multiply energy draw by inference time to get an estimate of energy required per inference (you can average over input size).
+
+| Configuration          | Energy Draw (Watt) | Latency (s) | Energy per Inference (J) |
+|------------------------|--------------------|-------------|--------------------------|
+| Baseline (UNet)        | 8.2                | 94.74       | 776.868                  |
+| Light (UNet)           | 6.3                | 89.06       | 561.078                  |
+| Lighter (UNet)         | 6.1                | 76.94       | 469.334                  |
+
 3. Multiply this by the carbon intensity of the location of your device. You can use [this resource](https://www.epa.gov/egrid/power-profiler#/).
+- Device location: Shadyside, Pittsburgh PA
+- EPA eGRID region: RFCW
+- Carbon intensity: 1067.7 lbs CO2/MWh
+
+| Configuration          | Energy per Inference (J) | CO2(lbs)      |
+|------------------------|--------------------------|---------------|
+| Baseline (UNet)        | 776.868                    | 0.0002304061 |
+| Light (UNet)           | 561.078                    | 0.00016640638 |
+| Lighter (UNet)         | 469.334                   | 0.00013919664|
+
+
+
 4. Please include at least this estimate in your final project report.
 
 2: Training
